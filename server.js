@@ -16,6 +16,15 @@ app.get('/app/roll/', (req, res, next) => {
 	let outp = JSON.stringify(roll(6, 2, 1));
 	res.send(outp);
 });
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+app.post('/app/roll/', (req, res, next) => {
+	let outp = JSON.stringify(roll(6, 2, 1));
+	if (req.body.sides !== undefined && req.body.dice !== undefined && req.body.rolls !== undefined) {
+		outp = JSON.stringify(roll(req.body.sides, req.body.dice, req.body.rolls));
+	}
+	res.send(outp);
+});
 app.get('*', function(req, res){
   res.status(404).send('404 NOT FOUND');
 });
