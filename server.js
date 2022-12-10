@@ -10,4 +10,7 @@ app.get('/app/', (req, res, next) => {
 	res.status(200).send('200 OK');
 });
 
-app.listen(port, () => {});
+app.get('*', function(req, res){
+  res.status(404).send('404 NOT FOUND');
+});
+app.listen(port, ()=>{});
