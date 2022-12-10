@@ -19,10 +19,17 @@ app.get('/app/roll/', (req, res, next) => {
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.post('/app/roll/', (req, res, next) => {
-	let outp = JSON.stringify(roll(6, 2, 1));
+	let outp = JSON.stringify(6, 2, 1);
 	if (req.body.sides !== undefined && req.body.dice !== undefined && req.body.rolls !== undefined) {
-		outp = JSON.stringify(roll(req.body.sides, req.body.dice, req.body.rolls));
+		outp = JSON.stringify(roll(Number(req.body.sides), Number(req.body.dice), Number(req.body.rolls)));
 	}
+	res.send(outp);
+});
+app.post('/app/roll/:sides/', (req, res, next) => {
+	let inp1 = req.params.sides;
+	let inp2 = 2;
+	let inp3 = 1;
+	outp = JSON.stringify(roll(inp1, inp2, inp3));
 	res.send(outp);
 });
 app.get('*', function(req, res){
