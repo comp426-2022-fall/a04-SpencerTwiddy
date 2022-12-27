@@ -45,7 +45,7 @@ app.get("/app/roll/:sides/:dice?/:rolls?/", (req, res, next) => {
 	if (req.params.sides) { inp1 = Number(req.params.sides)};
 	if (req.params.dice) { inp2 = Number(req.params.dice)};
 	if (req.params.rolls) { inp3 = Number(req.params.rolls)};
-	outp = JSON.stringify(roll(inp1, inp2, inp3));
+	let outp = JSON.stringify(roll(inp1, inp2, inp3));
 	res.send(outp);
 });
 app.get('*', function(req, res){
