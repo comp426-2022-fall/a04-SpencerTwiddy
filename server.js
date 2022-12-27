@@ -16,7 +16,6 @@ app.get('/app/roll/', (req, res, next) => {
 	let outp = JSON.stringify(roll(6, 2, 1));
 	res.send(outp);
 });
-app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.post('/app/roll/', (req, res, next) => {
 	let outp = JSON.stringify(6, 2, 1);
@@ -25,10 +24,27 @@ app.post('/app/roll/', (req, res, next) => {
 	}
 	res.send(outp);
 });
-app.post('/app/roll/:sides/', (req, res, next) => {
-	let inp1 = req.params.sides;
+// app.post('/app/roll/:sides/', (req, res, next) => {
+// 	let inp1 = Number(req.params.sides);
+// 	let inp2 = 2;
+// 	let inp3 = 1;
+// 	outp = JSON.stringify(roll(inp1, inp2, inp3));
+// 	res.send(outp);
+// });
+// app.post('/app/roll/:sides/:dice/', (req, res, next) => {
+// 	let inp1 = Number(req.params.sides);
+// 	let inp2 = Number(req.params.dice);
+// 	let inp3 = 1;
+// 	outp = JSON.stringify(roll(inp1, inp2, inp3));
+// 	res.send(outp);
+// });
+app.post("/app/roll/:sides/:dice?/:rolls?/", (req, res, next) => {
+	let inp1 = 6;
 	let inp2 = 2;
 	let inp3 = 1;
+	if (req.params.sides) { inp1 = Number(req.params.sides)};
+	if (req.params.dice) { inp2 = Number(req.params.dice)};
+	if (req.params.rolls) { inp3 = Number(req.params.rolls)};
 	outp = JSON.stringify(roll(inp1, inp2, inp3));
 	res.send(outp);
 });
