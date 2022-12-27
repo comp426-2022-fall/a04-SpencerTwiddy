@@ -24,20 +24,6 @@ app.post('/app/roll/', (req, res, next) => {
 	}
 	res.send(outp);
 });
-// app.post('/app/roll/:sides/', (req, res, next) => {
-// 	let inp1 = Number(req.params.sides);
-// 	let inp2 = 2;
-// 	let inp3 = 1;
-// 	outp = JSON.stringify(roll(inp1, inp2, inp3));
-// 	res.send(outp);
-// });
-// app.post('/app/roll/:sides/:dice/', (req, res, next) => {
-// 	let inp1 = Number(req.params.sides);
-// 	let inp2 = Number(req.params.dice);
-// 	let inp3 = 1;
-// 	outp = JSON.stringify(roll(inp1, inp2, inp3));
-// 	res.send(outp);
-// });
 app.get("/app/roll/:sides/:dice?/:rolls?/", (req, res, next) => {
 	let inp1 = 6;
 	let inp2 = 2;
