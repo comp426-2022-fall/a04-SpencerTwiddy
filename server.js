@@ -38,7 +38,7 @@ app.post('/app/roll/', (req, res, next) => {
 // 	outp = JSON.stringify(roll(inp1, inp2, inp3));
 // 	res.send(outp);
 // });
-app.post("/app/roll/:sides/:dice?/:rolls?/", (req, res, next) => {
+app.get("/app/roll/:sides/:dice?/:rolls?/", (req, res, next) => {
 	let inp1 = 6;
 	let inp2 = 2;
 	let inp3 = 1;
